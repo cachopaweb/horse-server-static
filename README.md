@@ -3,7 +3,7 @@ Middleware to server static files in Horse
 
 ### For install in your project using [boss](https://github.com/HashLoad/boss):
 ``` sh
-$ boss install github.com/CachopaWeb/Horse-Server-Static
+$ boss install github.com/CachopaWeb/horse-server-static
 ```
 
 Sample Horse Server

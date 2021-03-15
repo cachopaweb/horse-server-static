@@ -6,6 +6,7 @@
 	"mainsrc": "./",
 	"projects": [],
 	"dependencies": {
+		"github.com/cachopaweb/horse-server-static": "^1.0.0",
 		"github.com/hashload/horse": "^2.0.13"
 	}
 }

@@ -75,7 +75,7 @@ begin
       Res.RawWebResponse.SetCustomHeader('Content-Length', FileStream.Size.toString);
       Res.RawWebResponse.ContentStream := FileStream;
       Res.RawWebResponse.SendResponse;
-    except on E: Exception do
+    finally
 
     end;
   end;

@@ -26,3 +26,23 @@ begin
   end);
 end;
 ```
+
+## usage
+
+### It can be any folder next to the executable
+### Image directory
+### Ex.: public/imagem.jpg
+``` sh
+THorse.Use(ServerStatic('public'));
+
+http://localhost:9000/imagem.jpg
+```
+### Or files from a static website
+### Ex.: public/index.html
+
+``` sh
+http://localhost:9000/index.html
+http://localhost:9000/css/style.css
+http://localhost:9000/js/app.js
+http://localhost:9000/images/bg.png
+```

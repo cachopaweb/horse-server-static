@@ -72,7 +72,6 @@ begin
       //send response
       Res.Status(THTTPStatus.OK);
       Res.RawWebResponse.SetCustomHeader('Content-Type', ChangeContentType(Extension));
-      Res.RawWebResponse.SetCustomHeader('Content-Length', FileStream.Size.toString);
       Res.RawWebResponse.ContentStream := FileStream;
       Res.RawWebResponse.SendResponse;
     finally

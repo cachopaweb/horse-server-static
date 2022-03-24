@@ -2,8 +2,6 @@ unit Horse.ServerStatic;
 
 interface
 
-interface
-
 uses
   System.Classes,
   System.SysUtils,

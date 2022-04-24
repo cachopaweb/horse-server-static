@@ -36,3 +36,7 @@ src/*.~*
 *.~*
 *.a
 *.stat
+*.ppu
+*.compiled
+*.or
+*.bak

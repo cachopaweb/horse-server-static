@@ -1,0 +1,12 @@
+{
+	"name": "lazarus",
+	"description": "",
+	"version": "1.0.0",
+	"homepage": "",
+	"mainsrc": "./src",
+	"projects": [],
+	"dependencies": {
+		"github.com/hashload/horse": "^3.0.1",
+		"https://github.com/cachopaweb/horse-server-static": "^1.0.3"
+	}
+}

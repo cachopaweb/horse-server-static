@@ -51,9 +51,11 @@ var
   {$ENDIF}
   LPath: String;
   LIndexFiles : TStringDynArray;
+  LExtension: string;	
 begin
-  if MatchText(Copy(Req.RawWebRequest.PathInfo,2,Length(Path)).Replace('/',PathDelim), Path.Replace('/',PathDelim)) then
-  begin
+	LExtension := ExtractFileExt(Req.RawWebRequest.PathInfo);
+  if not LExtension.isEmpty or Req.RawWebRequest.PathInfo.EndsWith('/') then
+	begin
     {$IF DEFINED(FPC)}
     LPath := ConcatPaths([GetCurrentDir]);
     LFullPath := ConcatPaths([LPath,Req.RawWebRequest.PathInfo.Replace('/',PathDelim)]);

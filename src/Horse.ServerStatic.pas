@@ -17,7 +17,7 @@ uses
   Horse,
   Horse.Commons;
 
-function ServerStatic(PathRoot: String): THorseCallback;
+function ServerStatic(PathRoot: String; RegisteredRoute: String = ''): THorseCallback;
 procedure Middleware(Req: THorseRequest; Res: THorseResponse; Next: {$IF DEFINED(FPC)}TNextProc{$ELSE}TProc{$ENDIF});
 
 implementation
@@ -29,11 +29,14 @@ uses
   System.Net.Mime, System.IOUtils, System.Types, System.StrUtils;
   {$ENDIF}
 
-var Path: string;
+var Path, RegRoute: string;
 
-function ServerStatic(PathRoot: String): THorseCallback;
+function ServerStatic(PathRoot, RegisteredRoute: String): THorseCallback;
 begin
   Path := PathRoot;
+  RegRoute := RegisteredRoute;
+  if not AnsiStartsStr('/', RegRoute) then
+    RegRoute := '/'+RegRoute;
   Result :=  {$IF DEFINED(FPC)}@Middleware{$ELSE}Middleware{$ENDIF};
 end;
 
@@ -58,11 +61,11 @@ begin
 	begin
     {$IF DEFINED(FPC)}
     LPath := ConcatPaths([GetCurrentDir]);
-    LFullPath := ConcatPaths([LPath,Req.RawWebRequest.PathInfo.Replace('/',PathDelim)]);
+    LFullPath := ConcatPaths([LPath,Req.RawWebRequest.PathInfo.Replace(RegRoute, EmptyStr).Replace('/',PathDelim)]);
     LFullPath := LFullPath.Replace(PathDelim+PathDelim,PathDelim);
     {$ELSE}
     LPath := TPath.Combine(TPath.GetLibraryPath,Path);
-    LFullPath := LPath + TPath.DirectorySeparatorChar + Req.RawWebRequest.PathInfo.Replace('/',TPath.DirectorySeparatorChar);
+    LFullPath := LPath + TPath.DirectorySeparatorChar + Req.RawWebRequest.PathInfo.Replace(RegRoute, EmptyStr).Replace('/',TPath.DirectorySeparatorChar);
     LFullPath := LFullPath.Replace(TPath.DirectorySeparatorChar+TPath.DirectorySeparatorChar,TPath.DirectorySeparatorChar);
     {$ENDIF}
 

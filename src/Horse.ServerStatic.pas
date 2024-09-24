@@ -110,7 +110,7 @@ begin
       Res.RawWebResponse.SendResponse;
       raise EHorseCallbackInterrupted.Create;
     finally
-      LFileStream.Free;
+      //LFileStream.Free; //Corrected by Herbert from 99 coders
     end;
   end;
 

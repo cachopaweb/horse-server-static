@@ -110,7 +110,9 @@ begin
       Res.RawWebResponse.SendResponse;
       raise EHorseCallbackInterrupted.Create;
     finally
-      //LFileStream.Free; //Corrected by Heber from 99 coders
+      (*Watching Heber class from 99 coders, I verified that it is not necessary 
+      to free the LFileStream variable, Horse itself already releases it from memory.*)
+      //LFileStream.Free; 
     end;
   end;
 
